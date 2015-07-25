@@ -1,3 +1,0 @@
-# Purpose of Code
-
-The run_analysis.R code takes the accelerometer data collected by Samsung Galaxy S smartphones and produces a cleaner data set. The original data set can be downloaded at https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
