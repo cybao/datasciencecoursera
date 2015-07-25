@@ -12,7 +12,7 @@ The original data set contains the accelerometer and gyroscope data of 30 volunt
 
 # Description of code
 
-The code assumes the user has the data set downloaded and copied to the same directory as the code.
+The code assumes the user has the data set downloaded, upzipped and copied to the same directory as the code.
 
 The code produces a cleaner data set with following steps:
  * combine the train and test data set
@@ -24,111 +24,111 @@ The code produces a cleaner data set with following steps:
 
 # Description of Output data (Code Book)
 The output data contains 68 columns and 180 rows (30 subjects each performing 6 types of activities). The columns are the mean of all data records for each subject doing each activities. All the data points are computed for a 2.56 sec window. The details of the columns:
-subject
+**subject**:
   identifier of volunteers performing the test
 
-activity_label
+**activity_label**:
   type of activity (walking, walking upstairs, walking downstairs, sitting, standing, laying)
 
-tBodyAcc-mean()-X/Y/Z
+**tBodyAcc-mean()-X/Y/Z**:
   mean of body acceleration signals along the X/Y/Z direction 
 
-tBodyAcc-std()-X/Y/Z
+**tBodyAcc-std()-X/Y/Z**:
   standard deviation of body acceleration signals along the X/Y/Z direction
 
-tGravityAcc-mean()-X/Y/Z
+**tGravityAcc-mean()-X/Y/Z**:
   mean of gravity acceleration signals along the X/Y/Z direction
 
-tGravityAcc-std()-X/Y/Z
+**tGravityAcc-std()-X/Y/Z**:
   standard deviation of gravity acceleration signals along the X/Y/Z direction
 
-tBodyAccJerk-mean()-X/Y/Z
+**tBodyAccJerk-mean()-X/Y/Z**:
   mean of body linear acceleration jerk signals along the X/Y/Z direction
 
-tBodyAccJerk-std()-X
+**tBodyAccJerk-std()-X**:
   standard deviation of body linear acceleration jerk signals along the X/Y/Z direction
 
-tBodyGyro-mean()-X/Y/Z
+**tBodyGyro-mean()-X/Y/Z**:
   mean of body angular velocity signals along the X/Y/Z direction
 
-tBodyGyro-std()-X/Y/Z
+**tBodyGyro-std()-X/Y/Z**:
   mean of body angular velocity signals along the X/Y/Z direction
 
-tBodyGyroJerk-mean()-X/Y/Z
+**tBodyGyroJerk-mean()-X/Y/Z**:
   mean of body angular velocity jerk signals along the X/Y/Z direction
 
-tBodyGyroJerk-std()-X/Y/Z
+**tBodyGyroJerk-std()-X/Y/Z**:
   mean of body angular velocity jerk signals along the X/Y/Z direction
 
-tBodyAccMag-mean()
+**tBodyAccMag-mean()**:
   mean of the magnitude of linear body acceleration
 
-tBodyAccMag-std()
+**tBodyAccMag-std()**:
   standard deviation of the magnitude of linear body acceleration
 
-tGravityAccMag-mean()
+**tGravityAccMag-mean()**:
   mean of the magnitude of linear gravity acceleration
 
-tGravityAccMag-std()
+**tGravityAccMag-std()**:
   standard deviation of the magnitude of linear gravity acceleration
 
-tBodyAccJerkMag-mean()
+**tBodyAccJerkMag-mean()**:
   mean of the magnitude of linear body acceleration jerk signal
 
-tBodyAccJerkMag-std()
+**tBodyAccJerkMag-std()**:
   standard deviation of the magnitude of linear body acceleration jerk signal
 
-tBodyGyroMag-mean()
+**tBodyGyroMag-mean()**:
   mean of the magnitude of body angular velocity
 
-tBodyGyroMag-std()
+**tBodyGyroMag-std()**:
   standard deviation of the magnitude of body angular velocity
 
-tBodyGyroJerkMag-mean()
+**tBodyGyroJerkMag-mean()**:
   mean of the magnitude of body angular velocity jerk signal
 
-tBodyGyroJerkMag-std()
+**tBodyGyroJerkMag-std()**:
   standard deviation of the magnitude of body angular velocity jerk signal
 
-fBodyAcc-mean()-X/Y/Z
+**fBodyAcc-mean()-X/Y/Z**:
   mean of fast fourier transform of the body linear acceleration along the X/Y/Z direction
 
-fBodyAcc-std()-X/Y/Z
+**fBodyAcc-std()-X/Y/Z**:
   standard deviation of fast fourier transform of the body linear acceleration along the X/Y/Z direction
 
-fBodyAccJerk-mean()-X/Y/Z
+**fBodyAccJerk-mean()-X/Y/Z**:
   mean of fast fourier transform of the body linear acceleration jerk signal along the X/Y/Z direction
 
-fBodyAccJerk-std()-X
+**fBodyAccJerk-std()-X**:
   standard deviation of fast fourier transform of the body linear acceleration jerk signal along the X/Y/Z direction
 
-fBodyGyro-mean()-X/Y/Z
+**fBodyGyro-mean()-X/Y/Z**:
   mean of fast fourier transform of the body angular velocity along the X/Y/Z direction
 
-fBodyGyro-std()-X/Y/Z
+**fBodyGyro-std()-X/Y/Z**:
   standard deviation of fast fourier transform of the body angular velocity along the X/Y/Z direction
 
-fBodyAccMag-mean()
+**fBodyAccMag-mean()**:
   mean of fast fourier transform of the magnitude of the body linear acceleration
 
-fBodyAccMag-std()
+**fBodyAccMag-std()**:
   standard deviation of the fast fourier transform of the magnitude of the body linear acceleration
 
-fBodyBodyAccJerkMag-mean()
+**fBodyBodyAccJerkMag-mean()**:
   mean of the fast fourier transform of the magnitude of the body linear acceleration jerk signal 
 
-fBodyBodyAccJerkMag-std()
+**fBodyBodyAccJerkMag-std()**:
   standard deviation of the fast fourier transform of the magnitude of the body linear acceleration jerk signal
 
-fBodyBodyGyroMag-mean()
+**fBodyBodyGyroMag-mean()**:
   mean of fast fourier transform of the magnitude of the body angular velocity
 
-fBodyBodyGyroMag-std()
+**fBodyBodyGyroMag-std()**:
   standard deviation of fast fourier transform of the magnitude of the body angular velocity
 
-fBodyBodyGyroJerkMag-mean()
+**fBodyBodyGyroJerkMag-mean()**:
   mean of fast fourier transform of the magnitude of the body angular velocity jerk signal
 
-fBodyBodyGyroJerkMag-std()
+**fBodyBodyGyroJerkMag-std()**:
   standard deviation of fast fourier transform of the magnitude of the body angular velocity jerk signal
 
