@@ -24,6 +24,7 @@ The code produces a cleaner data set with following steps:
 
 # Description of Output data (Code Book)
 The output data contains 68 columns and 180 rows (30 subjects each performing 6 types of activities). The columns are the mean of all data records for each subject doing each activities. All the data points are computed for a 2.56 sec window. The details of the columns:
+
 **subject**:
   identifier of volunteers performing the test
 
