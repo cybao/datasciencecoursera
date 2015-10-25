@@ -1,0 +1,70 @@
+---
+title: "Practical Maching Learning Assignment"
+author: "C. Bao"
+date: "10/25/2015"
+output: html_document
+---
+# Introduction
+With recent development of technology people can collect motion data while performing physical activities. In this assignment I develop a predictive model using accelerometer data on various locations to infer the manner people performed unilateral dumbbell biceps curl. In this study I use the Weight Lifting Exercise Dataset from http://groupware.les.inf.puc-rio.br/har. This data set contains accelerometer data on belt, forearm, arm and bumbell of 6 participants. The participants were asked to perform 10 repititions of unilateral dumbell biceps curl in 5 different ways:  exactly according to the specification, throwing the elbows to the front, lifting the dumbbell only halfway, lowering the dumbbell only halfway and throwing the hips to the front (class A through E, respectively).
+
+#Data Preprocessing
+First I download and load the dataset tailored for this assignment. Then I take a quick look at the fields contained in the data set. 
+
+```{r,cache=TRUE}
+if (!file.exists("pml-training.csv"))
+  download.file("https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv","pml-training.csv",
+                method="curl")
+pmltraining <- read.csv("pml-training.csv")
+names(pmltraining)
+```
+
+As seen above the first seven columns are related to the number of entry, participant name who performed the lift and timestamp of the lift etc. Since I want a universal predictive model regardless of the performer and the time the lift is performed, I will not use these fields when building my predictor. There are also fields related to the statistics of each lift (kurtosis, skewness, max, min, amplitude, var, avg and stddev) that I am not including when building the model because I want to use the raw accelerometer data only from the sensor to build my model. After selecting only the relative field, the data is split into training and testing sets.
+
+```{r, cache=TRUE,message=FALSE}
+library(dplyr)
+library(caret)
+dataselect <- select(pmltraining,c(roll_belt:classe))
+notselect <- grep("^kurtosis|^skewness|^var|^stddev|^amplitude|^avg|^max|^min",names(dataselect))
+data <- select(dataselect,-notselect)
+
+intrain <- createDataPartition(y=data$classe,p=0.75,list=FALSE)
+training <- data[intrain,]
+testing <- data[-intrain,]
+```
+
+#Precitive Modeling Using Machine Learning
+Since I am trying to predict the fashion the user performs the dumbell lift ('classe' variable in the data), this is a model for classification rather than regression. I decide to try using both random forest and boosting to build my predictive models.
+
+```{r, cache=TRUE,message=FALSE}
+library(randomForest)
+library(adabag)
+modelrf <- randomForest(classe~.,data=training)
+modeladaboost <- boosting(classe~.,data=training)
+```
+
+With the models I check the in- and out- sample error using the training and testing data sets. First I check the random forest model.
+
+```{r,cache=TRUE}
+predtrainrf <- predict(modelrf,newdata=training)
+predtestrf <- predict(modelrf,newdata=testing)
+
+confusionMatrix(predtrainrf,training$classe)
+confusionMatrix(predtestrf,testing$classe)
+```
+As we can see that the random forest model has 100% in-sample accuracy and 99.55% out-sample accuracy. This is exceptionally high for accuracy, which is a little worrying for possible over-fitting. But this data set is tailored for the class assignment so the noise is probably less to begin with. I am also using all the possible predictors to build the model, which is fine for smaller data set but might be an issue for scalability. One possible future task is to reduce the number of predictors to create a fast but still reliable model.
+
+Next I check the performance of the boosting model.
+
+```{r,cache=TRUE}
+predtrainadaboost <- predict.boosting(modeladaboost,newdata=training)
+predtestadaboost <- predict.boosting(modeladaboost,newdata=testing)
+
+print(predtrainadaboost$confusion)
+print(predtrainadaboost$error)
+print(predtestadaboost$confusion)
+print(predtestadaboost$error)
+```
+For the boosting model, the in-sample error rate is 6% and the estimated out-sample rate is 7%. The accuracy is not as high as the random forest model but still pretty good in general.
+
+#Conclusion
+In this study I use the Weight Lifting Exercise Dataset to build predictive models for classifying the manner people do their bicep dumbell lifts. I build two models using random forest and boosting. Both of the models achieve <10% in- and out- sample errors.
